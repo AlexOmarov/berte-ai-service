@@ -1,0 +1,75 @@
+name: "Code quality workflow"
+
+on:
+  push:
+    branches:
+      - dev
+      - master
+
+permissions: read-all
+
+concurrency:
+  group: code_quality
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+    working-directory: .
+
+jobs:
+  code_quality:
+    name: "Code quality"
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: NotifyPush
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: markdown
+          message: |
+            ${{ github.actor }} -> ${{ github.repository }}
+
+            ${{ github.event.commits[0].message }}
+
+            *Starting*
+
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: CondaSetup
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          activate-environment: berte-ai-service
+          environment-file: environment.yml
+
+      - name: Test with pytest
+        run: |
+          python -m pytest -s -v  src/test/app --cov-report xml:coverage.xml --cov --cov-report term --cov-config .coveragerc
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: NotifyCompletion
+        if: always()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: markdown
+          message: |
+            ${{ github.actor }} -> ${{ github.repository }}
+            
+            ${{ github.event.commits[0].message }}
+
+            *${{ job.status }}*
+            
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
