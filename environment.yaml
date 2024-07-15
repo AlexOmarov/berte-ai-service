@@ -19,8 +19,6 @@ dependencies:
   - sqlite == 3.45.3
   - tk == 8.6.14
   - toml == 0.10.2
-  - vc == 14.2
-  - vs2015_runtime == 14.29.30133
   - wheel == 0.43.0
   - xz == 5.4.6
   - zlib == 1.2.13
