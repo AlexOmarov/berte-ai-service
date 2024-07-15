@@ -1,6 +1,7 @@
 name: berte-ai-service
 channels:
   - defaults
+  - conda-forge
 dependencies:
   - bzip2=1.0.8=h2bbff1b_6
   - ca-certificates=2024.7.2=haa95532_0
