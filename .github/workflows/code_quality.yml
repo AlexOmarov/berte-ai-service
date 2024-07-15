@@ -46,14 +46,13 @@ jobs:
       - name: CondaSetup
         uses: conda-incubator/setup-miniconda@v3
         with:
+          auto-update-conda: true
           activate-environment: berte-ai-service
           environment-file: environment.yaml
 
       - name: Test with pytest
         run: |
-          conda init
-          conda activate berte-ai-service
-          python -m pytest -s -v  src/test/app --cov-report xml:coverage.xml --cov --cov-report term --cov-config .coveragerc
+          conda run python -m pytest -s -v  src/test/app --cov-report xml:coverage.xml --cov --cov-report term --cov-config .coveragerc
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
