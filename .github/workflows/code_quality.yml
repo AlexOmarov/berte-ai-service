@@ -51,6 +51,7 @@ jobs:
 
       - name: Test with pytest
         run: |
+          conda activate berte-ai-service
           python -m pytest -s -v  src/test/app --cov-report xml:coverage.xml --cov --cov-report term --cov-config .coveragerc
 
       - name: SonarCloud Scan
