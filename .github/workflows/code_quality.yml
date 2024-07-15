@@ -53,10 +53,10 @@ jobs:
       - name: CondaInit
         run : |
           conda init bash
-          conda activate berte-ai-service
 
       - name: Test with pytest
         run: |
+          conda activate berte-ai-service
           conda run python -m pytest -s -v  src/test/app --cov-report xml:coverage.xml --cov --cov-report term --cov-config .coveragerc
 
       - name: SonarCloud Scan
