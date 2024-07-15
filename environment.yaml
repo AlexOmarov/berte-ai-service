@@ -4,12 +4,20 @@ channels:
 dependencies:
   - bzip2=1.0.8=h2bbff1b_6
   - ca-certificates=2024.7.2=haa95532_0
+  - colorama=0.4.6=py311haa95532_0
+  - coverage=7.2.2=py311h2bbff1b_0
+  - iniconfig=1.1.1=pyhd3eb1b0_0
   - libffi=3.4.4=hd77b12b_1
   - openssl=3.0.14=h827c3e9_0
+  - packaging=24.1=py311haa95532_0
+  - pluggy=1.0.0=py311haa95532_1
+  - pytest=7.4.4=py311haa95532_0
+  - pytest-cov=4.1.0=py311haa95532_1
   - python=3.11.9=he1021f5_0
   - setuptools=69.5.1=py311haa95532_0
   - sqlite=3.45.3=h2bbff1b_0
   - tk=8.6.14=h0416ee5_0
+  - toml=0.10.2=pyhd3eb1b0_0
   - vc=14.2=h2eaa2aa_4
   - vs2015_runtime=14.29.30133=h43f2093_4
   - wheel=0.43.0=py311haa95532_0
