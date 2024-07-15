@@ -7,3 +7,7 @@ name = "src"
 
 [tool.pytest.ini_options]
 pythonpath = [".", "src/main/app"]
+
+[tool.coverage.run]
+source = ['src']
+relative_files = true
