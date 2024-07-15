@@ -1,19 +1,24 @@
 FROM nvidia/cuda:11.7.1-base-ubuntu20.04
 
+RUN addgroup -S nonroot \
+    && adduser -S nonroot -G nonroot
+
+USER nonroot
+
 # Since wget is missing
-RUN apt-get update && apt-get install -y wget
+RUN apt-get update && apt-get --no-install-recommends install -y wget && apt-get clean
 
 #Install MINICONDA
-RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O Miniconda.sh && \
+RUN wget --secure-protocol=TLSv1_2 --max-redirect=0 https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O Miniconda.sh && \
 	/bin/bash Miniconda.sh -b -p /opt/conda && \
 	rm Miniconda.sh
 
 ENV PATH /opt/conda/bin:$PATH
 
-RUN apt-get update -y && apt-get install -y --no-install-recommends build-essential gcc libsndfile1
+RUN apt-get update -y && apt-get install -y --no-install-recommends build-essential gcc libsndfile1 && apt-get clean
 
 # Install gcc as it is missing in our base layer
-RUN apt-get update && apt-get -y install gcc
+RUN apt-get update && apt-get --no-install-recommends -y install gcc && apt-get clean
 
 #  Create conda env
 RUN conda config --set unsatisfiable_hints false

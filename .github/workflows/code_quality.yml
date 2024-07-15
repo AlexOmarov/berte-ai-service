@@ -58,7 +58,7 @@ jobs:
         run: |
           source ~/.bashrc
           conda activate berte-ai-service
-          conda run python -m pytest -s -v  src/test/app --cov-report xml:coverage.xml --cov --cov-report term --cov-config .coveragerc
+          conda run python -m pytest -s -v  src/test/app --cov-report xml:coverage.xml --cov --cov-report term
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
