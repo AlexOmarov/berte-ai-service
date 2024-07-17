@@ -2,13 +2,14 @@ from business.util.ml_logger.logger import get_logger
 
 from langchain_community.chat_models import ChatOllama
 from langchain_core.messages import HumanMessage
+import os
 
 logger = get_logger("APP")
-llm = ChatOllama(model="qwen2:0.5b", num_gpu=1)
+llm = ChatOllama(model="llama3:8b", num_gpu=10000, base_url=os.environ['OLLAMA_HOST'])
 
 messages = [
     HumanMessage(
-        content="What color is the sky at different times of the day? Respond using JSON"
+        content="Describe a woman named Katya who has black eyes, black hair, dark white skin in all of it's glory"
     )
 ]
 
