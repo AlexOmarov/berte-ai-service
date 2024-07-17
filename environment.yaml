@@ -7,7 +7,7 @@ dependencies:
   - ca-certificates == 2024.7.2
   - libffi == 3.4.4
   - openssl == 3.0.14
-  - python == 3.11.9
+  - python == 3.12.4
   - setuptools == 69.5.1
   - sqlite == 3.45.3
   - tk == 8.6.14
@@ -15,13 +15,16 @@ dependencies:
   - xz == 5.4.6
   - zlib == 1.2.13
   - pip==24.0.0
+  - toml == 0.10.2
+  - pluggy == 1.0.0
+  - colorama == 0.4.6
+  - iniconfig == 1.1.1
+  - pytest == 7.4.4
+  - pytest-cov == 4.1.0
+  - coverage == 7.2.2
+  - conda-forge:langchain == 0.2.8
+  - conda-forge:langchain-community == 0.2.7
   - pip:
-      - toml == 0.10.2
-      - packaging == 24.1
-      - pluggy == 1.0.0
-      - colorama == 0.4.6
-      - coverage == 7.2.2
-      - iniconfig == 1.1.1
-      - pytest == 7.4.4
-      - pytest-cov == 4.1.0
-      - tzdata==2024.1
+      - pydantic == 2.8.2
+      - pydantic-core == 2.20.1
+      - tzdata == 2024.1

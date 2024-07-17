@@ -3,8 +3,6 @@ FROM nvidia/cuda:12.5.1-cudnn-devel-ubuntu20.04
 # Since wget is missing
 RUN apt-get update && apt-get --no-install-recommends -y install wget && apt-get clean
 
-RUN adduser --group docker
-
 #Install MINICONDA
 RUN wget --secure-protocol=TLSv1_2 --max-redirect=0 https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O Miniconda.sh && \
 	/bin/bash Miniconda.sh -b -p /opt/conda && \
@@ -30,6 +28,7 @@ ADD pyproject.toml /berte-ai-service/pyproject.toml
 
 RUN conda env create -f environment.yaml
 
+RUN useradd -ms /bin/bash docker
 USER docker
 
 # Make RUN commands use the new environment:
