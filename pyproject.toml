@@ -12,6 +12,6 @@ env = [
 ]
 
 [tool.coverage.run]
-source = ['src']
+source = ['src/main/app']
 relative_files = true
 omit = ['*test*']
