@@ -58,7 +58,7 @@ jobs:
         run: |
           source ~/.bashrc
           conda activate berte-ai-service
-          python -m pylint --output-format=parseable --output=pylint_report
+          python -m pylint src --output-format=parseable --output=pylint_report
 
       - name: Test with pytest
         run: |
