@@ -9,7 +9,7 @@ llm = ChatOllama(model="llama3:8b", num_gpu=10000, base_url=os.environ['OLLAMA_H
 
 messages = [
     HumanMessage(
-        content="Describe a woman named Katya who has black eyes, black hair, dark white skin in all of it's glory"
+        content="Describe a glass of wine which stands on a table outside the restaurant"
     )
 ]
 

@@ -26,5 +26,6 @@ dependencies:
   - conda-forge:langchain-community == 0.2.7
   - pip:
       - pydantic == 2.8.2
+      - pylint == 3.2.6
       - pydantic-core == 2.20.1
       - tzdata == 2024.1
