@@ -1,30 +1,41 @@
-def setup():
+"""
+Example of pytest tests
+"""
+
+
+def _setup():
     print("basic setup into module")
 
 
-def teardown():
+def _teardown():
     print("basic teardown into module")
 
 
-def setup_module(module):
-    print("module setup")
+def _setup_module(module):
+    print("module setup " + module)
 
 
-def teardown_module(module):
-    print("module teardown")
+def _teardown_module(module):
+    print("module teardown " + module)
 
 
-def setup_function(function):
-    print("function setup")
+def _setup_function(function):
+    print("function setup " + function)
 
 
-def teardown_function(function):
-    print("function teardown")
+def _teardown_function(function):
+    print("function teardown " + function)
 
 
 def test_numbers_3_4():
+    """
+    Assert simple int multiply
+    """
     assert 3 * 4 == 12
 
 
 def test_strings_a_3():
+    """
+    Assert string/int multiply
+    """
     assert 'a' * 3 == 'aaa'

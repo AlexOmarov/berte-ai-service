@@ -1,9 +1,14 @@
+"""
+Factory method for creating logger
+"""
+
 import logging
 
-_log_format = "%(asctime)s - %(levelname)s - %(name)s - (%(filename)s).%(funcName)s(%(lineno)d) - %(message)s"
+_LOG_FORMAT = "%(asctime)s - %(levelname)s - %(name)s - (%(filename)s).%(funcName)s(%(lineno)d) - %(message)s"
 
 
-def get_logger(name):
+def create_logger(name):
+    """ Create formatted logger with default config """
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
     logger.addHandler(_get_stream_handler())
@@ -13,5 +18,5 @@ def get_logger(name):
 def _get_stream_handler():
     stream_handler = logging.StreamHandler()
     stream_handler.setLevel(logging.INFO)
-    stream_handler.setFormatter(logging.Formatter(_log_format))
+    stream_handler.setFormatter(logging.Formatter(_LOG_FORMAT))
     return stream_handler

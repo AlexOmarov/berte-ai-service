@@ -1,18 +1,24 @@
-from business.util.ml_logger.logger import get_logger
-
-from langchain_community.chat_models import ChatOllama
-from langchain_core.messages import HumanMessage
+"""
+Script for executing first call to chatLLM
+"""
 import os
 
-logger = get_logger("APP")
-llm = ChatOllama(model="llama3:8b", num_gpu=10000, base_url=os.environ['OLLAMA_HOST'])
+from langchain_community.chat_models import ChatOllama
+from langchain_core.messages import HumanMessage, BaseMessage
 
-messages = [
-    HumanMessage(
-        content="Describe a glass of wine which stands on a table outside the restaurant"
-    )
-]
+from business.util.ml_logger.logger import create_logger
 
-res = llm.invoke(messages)
+logger = create_logger("APP")
+logger.info("Hello!")
 
-logger.info(res)
+
+def _call_chat(content: str) -> BaseMessage:
+    llm = ChatOllama(model="llama3:8b", num_gpu=10000, base_url=os.environ['OLLAMA_HOST'])
+
+    messages = [
+        HumanMessage(
+            content=content
+        )
+    ]
+
+    return llm.invoke(messages)
