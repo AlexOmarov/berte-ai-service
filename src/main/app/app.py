@@ -12,16 +12,15 @@ from transformers import AutoProcessor, MusicgenForConditionalGeneration
 from business.util.ml_logger.logger import create_logger
 
 
-def _generate():
+def _generate(text: str):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     processor = AutoProcessor.from_pretrained("facebook/musicgen-small")
     model = MusicgenForConditionalGeneration.from_pretrained("facebook/musicgen-small")
     print(device)
     inputs = processor(
         text=[
-            "Deep, dark, scary echo ambient sound of a cave with water drops, filled with distant voices singing dark "
-            "choir like underground demons"
-            ],
+
+        ],
         padding=True,
         return_tensors="pt",
     ).to(device)
@@ -47,4 +46,5 @@ def _call_chat(content: str) -> BaseMessage:
     return res
 
 
-_generate()
+_generate("Deep, dark, scary echo ambient sound of a cave with water drops, filled with distant voices singing dark "
+          "choir like underground demons")
