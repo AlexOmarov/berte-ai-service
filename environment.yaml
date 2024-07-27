@@ -25,7 +25,10 @@ dependencies:
   - wheel == 0.43.0
   - xz == 5.4.6
   - zlib == 1.2.13
+  - cudatoolkit == 11.8.0
   - pip:
+      - transformers == 4.43.3
+      - scipy == 1.14.0
       - pydantic == 2.8.2
       - pylint == 3.2.6
       - pydantic-core == 2.20.1
